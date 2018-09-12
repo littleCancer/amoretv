@@ -1,4 +1,5 @@
-import {spawn, call, delay} from 'redux-saga';
+import { spawn, call } from 'redux-saga/effects';
+import { delay } from "redux-saga";
 
 const makeRestartable = (saga) => {
     return function*() {
