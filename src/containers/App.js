@@ -1,9 +1,11 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { history } from '../_helpers'
-import { Dashboard } from '../containers/Dashboard';
-import { LoginPage } from '../containers/LoginPage';
+import Dashboard from './Dashboard';
+import LoginPage from './LoginPage';
+import PrivateRoute from '../_routes/PrivateRoute';
+import { alertActions } from "../actions/alertActions";
+import { connect } from 'react-redux';
 
 class App extends React.Component {
 
@@ -35,3 +37,15 @@ class App extends React.Component {
     }
 
 }
+
+function mapSateToProps(state) {
+  const { alert } = state;
+  return {
+    alert
+  };
+}
+
+const connectedApp = connect(mapSateToProps)(App);
+
+export {connectedApp as App};
+
